@@ -17,6 +17,7 @@
         <input type="text" id="datepicker1" class="form-control">
 
     </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
        <script src="app.js"></script>
       <script type="text/javascript">
 
@@ -24,7 +25,10 @@
         window.onload = function () {
             
             let previous_value = null
-            document.querySelector('#datepicker1').addEventListener('datechanged', function (e) {
+            let dateElement=document.querySelector('#datepicker1');
+            dateElement.value = moment().format('LL');
+
+            dateElement.addEventListener('datechanged', function (e) {
                 if (e.target.value !== ""){
                     previous_value  = e.target.value;
                 }
@@ -34,7 +38,7 @@
             })
 
             duDatepicker('#datepicker1', {
-                format: 'mmmm d, yyyy', range: false, clearBtn: true,
+                format: 'mmmm d, yyyy', range: false, clearBtn: true
         
             });
             document.querySelector('.dudp__buttons .clear').textContent = "Cancel";
