@@ -24,15 +24,15 @@
 
         window.onload = function () {
             
-            let previous_value = null
+            let previous_value = moment().format('LL');
             let dateElement=document.querySelector('#datepicker1');
-            dateElement.value = moment().format('LL');
+            dateElement.value = previous_value;
 
             dateElement.addEventListener('datechanged', function (e) {
                 if (e.target.value !== ""){
                     previous_value  = e.target.value;
                 }
-                if(e.target.value === "" && previous_value != null){
+                if(e.target.value === ""){
                     e.target.value  = previous_value;
                 }
             })
