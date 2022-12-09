@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/solar/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Date Picker</h2>
+        <input type="text" id="datepicker1" class="form-control">
+
+    </div>
+       <script src="app.js"></script>
+      <script type="text/javascript">
+
+
+        window.onload = function () {
+            
+            let previous_value = null
+            document.querySelector('#datepicker1').addEventListener('datechanged', function (e) {
+                if (e.target.value !== ""){
+                    previous_value  = e.target.value;
+                }
+                if(e.target.value === "" && previous_value != null){
+                    e.target.value  = previous_value;
+                }
+            })
+
+            duDatepicker('#datepicker1', {
+                format: 'mmmm d, yyyy', range: false, clearBtn: true,
+        
+            });
+            document.querySelector('.dudp__buttons .clear').textContent = "Cancel";
+            
+            
+        }
+    </script>
+</body>
+
+</html>
