@@ -1,33 +1,60 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AC</title>
+    <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/solar/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: blue;
+        }
 
+        .calender_area {
+            height: 60px;
+            background: #fff;
+            display: flex;
+            position: relative;
+            color: #000;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 18px;
+            padding: 0px 20px;
+            overflow: hidden;
+        }
+
+        input {
+            border: none;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" onclick="">
 
-        <h2>Date Picker</h2>
-        <input type="text" id="datepicker1" class="form-control">
-
+    <div class="calender_area">
+        <span class="calender_title">Fecha:</span>
+        <input type="text" id="datepicker1" class="">
+        <!-- <span class="cander_icon"><i class="fa-regular fa-calendar"></i></span> -->
     </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
        <script src="app.js"></script>
       <script type="text/javascript">
-
+        let previous_value = moment().format('LL');
+        let dateElement=document.querySelector('#datepicker1');
+        
+        dateElement.value = previous_value;
 
         window.onload = function () {
             
-            let previous_value = moment().format('LL');
-            let dateElement=document.querySelector('#datepicker1');
+            document.querySelector(".calender_area").addEventListener("click",()=>{
+            dateElement.click();
             dateElement.value = previous_value;
-
+            
             dateElement.addEventListener('datechanged', function (e) {
                 if (e.target.value !== ""){
                     previous_value  = e.target.value;
@@ -42,10 +69,12 @@
         
             });
             document.querySelector('.dudp__buttons .clear').textContent = "Cancel";
+            })
             
             
         }
     </script>
+
 </body>
 
 </html>

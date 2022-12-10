@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!---::::::::- count_numbers -:::::::--->
+    <div class="cant_are">
+        <h3>Cant.</h3>
+        <div class="number_content">
+            <button class="minus_numBtn" onclick="Counter(this)" to-do="dec"><i class="fa-solid fa-minus"></i></button>
+            <input type="number" class="count_numbers"/>
+            <button class="minus_numBtn" onclick="Counter(this)" to-do="inc"><i class="fa-solid fa-plus"></i></button>
+        </div>
+    </div>
+
+
+    <style>
+        .cbx {
+            position: relative;
+            top: 1px;
+            width: 17px;
+            height: 17px;
+            border: 1px solid #c8ccd4;
+            border-radius: 3px;
+            vertical-align: middle;
+            transition: background 0.1s ease;
+            cursor: pointer;
+        }
+
+        .cbx:after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 5px;
+            width: 5px;
+            height: 11px;
+            opacity: 0;
+            transform: rotate(45deg) scale(0);
+            border-right: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            transition: all 0.3s ease;
+            transition-delay: 0.15s;
+        }
+
+        .lbl {
+            margin-left: 5px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        #cbx:checked~.cbx {
+            border-color: transparent;
+            background: #6871f1;
+            animation: jelly 0.6s ease;
+        }
+
+        #cbx:checked~.cbx:after {
+            opacity: 1;
+            transform: rotate(45deg) scale(1);
+        }
+
+        .cntr {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        @-moz-keyframes jelly {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-webkit-keyframes jelly {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @-o-keyframes jelly {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        @keyframes jelly {
+            from {
+                transform: scale(1, 1);
+            }
+
+            30% {
+                transform: scale(1.25, 0.75);
+            }
+
+            40% {
+                transform: scale(0.75, 1.25);
+            }
+
+            50% {
+                transform: scale(1.15, 0.85);
+            }
+
+            65% {
+                transform: scale(0.95, 1.05);
+            }
+
+            75% {
+                transform: scale(1.05, 0.95);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+        .show{
+            display: none;
+        }
+    </style>
+
+
+    <div>
+            <!---::::::::- check -:::::::--->
+        <div class="cntr" onclick="showInput(this)">
+            <input class="hidden-xs-up" id="cbx" type="checkbox" />
+            <label class="cbx" for="cbx"></label>
+            <label class="lbl" for="cbx">Make Magic</label>
+        </div>
+        <!---::::::::- checked/uncheck -:::::::--->
+        <div class="show checked-box">
+            <input type="text">
+        </div>
+    </div>
+    <div>
+            <!---::::::::- check -:::::::--->
+        <div class="cntr" onclick="showInput(this)">
+            <input class="hidden-xs-up" id="cbx" type="checkbox" />
+            <label class="cbx" for="cbx"></label>
+            <label class="lbl" for="cbx">Make Magic</label>
+        </div>
+        <!---::::::::- checked/uncheck -:::::::--->
+        <div class="show checked-box">
+            <input type="text">
+        </div>
+    </div>
+    <script>
+        function Counter(self){
+            inputElement= self.parentElement.querySelector(".count_numbers");
+            value = inputElement.value === ""?0:parseInt(inputElement.value);
+            if(self.getAttribute("to-do") === "inc"){
+                 //increase value
+                 value += 1;
+
+            }
+            if(self.getAttribute("to-do") === "dec"){
+                //decrese value in 
+                if(value>0){
+                    value -= 1;
+                }
+            }
+            inputElement.value = value;
+            
+
+        }
+        function showInput(self){
+            let parent =  self.parentElement;
+            parent.querySelector(".checked-box").classList.toggle("show");
+        }
+    </script>
+
+
+</body>
+
+</html>
