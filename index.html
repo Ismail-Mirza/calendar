@@ -417,8 +417,8 @@
             const inputImg = document.createElement("input");
             inputImg.setAttribute("type","file");
             inputImg.setAttribute("id","camera-open");
-            inputImg.setAttribute("accept","image/*");
-            inputImg.setAttribute("capture","camera");
+            inputImg.setAttribute("accept","image/*;capture=camera");
+            //inputImg.setAttribute("capture","camera");
             inputImg.setAttribute("hidden",true);
             self.parentElement.append(inputImg);
             let parent = self.parentElement.parentElement;
