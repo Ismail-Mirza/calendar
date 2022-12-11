@@ -170,51 +170,36 @@
 
 <body>
     <h2>1st box</h2>
-    <template id="template1">
-        <div class="sc_bx_area">
-            <input type="text" placeholder="Representante" class="sc_input02">
-            <input type="text" placeholder="Cargo" class="sc_input02">
-            <!----button area---->
-            <div class="sc_Button_area">
-                <!----Minus---->
-                <div class="sc_Btn2 hidebtn">
-                    <button class="sc_btnMinus" onclick="deleteClone(this)"><i class="fa-solid fa-minus"></i></button>
-                </div>
-                <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <!-- <button class="sc_btnPlus"><i class="fa-solid fa-circle-minus"></i></button> -->
-                    <button class="sc_btnPlus" id-value="template1" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-        </div>
-    </template>
-    
     <section style="padding: 20px;">
         <!----box---->
-        <div class="sc_bx_area">
+        <div class="sc_bx_area" data-value="clone-item">
             <input type="text" placeholder="Representante" class="sc_input02">
             <input type="text" placeholder="Cargo" class="sc_input02">
             <!----button area---->
             <div class="sc_Button_area">
                 <!----Minus---->
+                <div class="sc_Btn2 show minusBtn" onclick="removeClone(this)">
+                    <button class="sc_btnMinus"><i class="fa-solid fa-minus"></i></button>
+                </div>
                 <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <!-- <button class="sc_btnPlus"><i class="fa-solid fa-circle-minus"></i></button> -->
-                    <button class="sc_btnPlus" id-value="template1" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
+                <div class="sc_Btn2 plus_btnsc addBtn" onclick="cloneMe(this)">
+                    <button class="sc_btnPlus"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
     <h3>2nd box </h3>
-    <template id="template2">
-         <div class="sc_bx_area">
+
+    <section style="padding: 20px;">
+        <!----box---->
+        <div class="sc_bx_area" data-value="clone-item">
             <input type="text" placeholder="Representante" class="sc_input02">
             <!----img upload---->
             <div class="imgbox_area_content">
                 <div class="imgbox_area">
                     <div class="img_body_upload" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
+                        <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
                         <div class="add_imgs show">
                             <img class="image_up" src="" alt="upload">
                             <span class="img_deleted_btn">
@@ -226,9 +211,9 @@
                 </div>
 
                 <!----alert---->
-                <div class="alert_img_which">
-                    <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
+                <div class="alert_img_which show">
+                    
+                    
                     <button class="choose_photo" onclick="executeInput(this)">choose</button>
                     <button class="camera_open" onclick="executeCamera(this)">camera</button>
                 </div>
@@ -237,138 +222,12 @@
             <!----button area---->
             <div class="sc_Button_area">
                 <!----Minus---->
-                <div class="sc_Btn2 hidebtn" >
-                    <button class="sc_btnMinus" onclick="deleteClone(this)"><i class="fa-solid fa-minus"></i></button>
-                </div>
-                <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <button class="sc_btnPlus" id-value="template2" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-        </div>
-
-    </template>
-    <section style="padding: 20px;">
-        <!----box---->
-        <div class="sc_bx_area">
-            <input type="text" placeholder="Representante" class="sc_input02">
-            <!----img upload---->
-            <div class="imgbox_area_content">
-                <div class="imgbox_area">
-                    <div class="img_body_upload" onclick="template" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs show">
-                            <img class="image_up" src="" alt="upload">
-                            <span class="img_deleted_btn">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!----alert---->
-                <div class="alert_img_which">
-                    <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
-                </div>
-            </div>
-
-            <!----button area---->
-            <div class="sc_Button_area">
-                <!----Minus---->
-                <!-- <div class="sc_Btn2">
+                <div class="sc_Btn2 show minusBtn" onclick="removeClone(this)">
                     <button class="sc_btnMinus"><i class="fa-solid fa-minus"></i></button>
-                </div> -->
-                <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <button class="sc_btnPlus" id-value="template2" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <h2>Section 2 Copy</h2>
-    <template id="template3">
-         <div class="sc_bx_area">
-            <input type="text" placeholder="Ismail" class="sc_input02">
-            <!----img upload---->
-            <div class="imgbox_area_content">
-                <div class="imgbox_area">
-                    <div class="img_body_upload" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs show">
-                            <img class="image_up" src="" alt="upload">
-                            <span class="img_deleted_btn">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!----alert---->
-                <div class="alert_img_which">
-                    <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
-                </div>
-            </div>
-
-            <!----button area---->
-            <div class="sc_Button_area">
-                <!----Minus---->
-                <div class="sc_Btn2 hidebtn" >
-                    <button class="sc_btnMinus" onclick="deleteClone(this)"><i class="fa-solid fa-minus"></i></button>
                 </div>
                 <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <button class="sc_btnPlus" id-value="template3" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
-                </div>
-            </div>
-        </div>
-
-    </template>
-    <section style="padding: 20px;">
-        <!----box---->
-        <div class="sc_bx_area">
-            <input type="text" placeholder="Ismail" class="sc_input02">
-            <!----img upload---->
-            <div class="imgbox_area_content">
-                <div class="imgbox_area">
-                    <div class="img_body_upload" onclick="template" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs show">
-                            <img class="image_up" src="" alt="upload">
-                            <span class="img_deleted_btn">
-                                <i class="fa-solid fa-xmark"></i>
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!----alert---->
-                <div class="alert_img_which">
-                    <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
-                </div>
-            </div>
-
-            <!----button area---->
-            <div class="sc_Button_area">
-                <!----Minus---->
-                <!-- <div class="sc_Btn2">
-                    <button class="sc_btnMinus"><i class="fa-solid fa-minus"></i></button>
-                </div> -->
-                <!----Plus---->
-                <div class="sc_Btn2 plus_btnsc">
-                    <button class="sc_btnPlus" id-value="template3" onclick="cloneMe(this)"><i class="fa-solid fa-plus"></i></button>
+                <div class="sc_Btn2 plus_btnsc addBtn" onclick="cloneMe(this)">
+                    <button class="sc_btnPlus"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
         </div>
@@ -379,13 +238,13 @@
     <!----upload photo---->
     <section style="padding: 20px;">
         <!----box---->
-        <div class="sc_bx_area">
+        <div class="sc_bx_area" data-value="clone-item">
             <!----img upload---->
             <div class="imgbox_area_content">
                 <div class="imgbox_area">
                     <div class="img_body_upload" id="uploadFiles">
                         <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs show"> 
+                        <div class="add_imgs">
                             <img class="image_up" src="" alt="upload">
                             <span class="img_deleted_btn">
                                 <i class="fa-solid fa-xmark"></i>
@@ -398,10 +257,8 @@
 
             <!----alert---->
             <div class="alert_img_which">
-                <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
+                <button class="choose_photo">choose</button>
+                <button class="camera_open">camera</button>
             </div>
         </div>
 
@@ -416,9 +273,9 @@
             <div class="imgbox_area_content">
                 <div class="imgbox_area">
 
-                    <div class="img_body_upload" onclick="show_modal(this)" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs show">
+                    <div class="img_body_upload" id="uploadFiles">
+                        <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
+                        <div class="add_imgs">
                             <img class="image_up" src="" alt="upload">
                             <span class="img_deleted_btn">
                                 <i class="fa-solid fa-xmark"></i>
@@ -430,11 +287,9 @@
             </div>
 
             <!----alert---->
-            <div class="alert_img_which show">
-                    <input type="file" id="img-upload" accept="image/*" hidden>
-                    <input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
+            <div class="alert_img_which">
+                <button class="choose_photo">choose</button>
+                <button class="camera_open">camera</button>
             </div>
         </div>
 
@@ -442,51 +297,87 @@
 
 
 
-    <script >
+    <script>
         function scroll(scrollDiv){
             window.scrollTo({ top: scrollDiv.offsetTop, behavior: 'smooth'});
         }
-        //code for add or minus
-        function cloneMe(self,id){
-            let parent = self.parentElement.parentElement.parentElement.parentElement;
-            let template =document.querySelector(`#${self.getAttribute("id-value")}`);
-            console.log(template)
-            let target = template.content.cloneNode(true);
-            self.parentElement.classList.toggle("show");
-            let hideBtn = parent.querySelectorAll('.hidebtn');
-            if(hideBtn.length == 1){
-                hideBtn[0].classList.toggle('show');
-                target.querySelector(".plus_btnsc").classList.toggle("show");
-            }
-            if(hideBtn.length <=2)
-            {
-            
-                parent.append(target);
-                
-            
-            }
-            
-            scroll(parent.children[parent.children.length-1]);
-            
+        function cloneMe(self){
+           let  clone_item = self;
     
+            while(true){
+                clone_item = clone_item.parentElement;
+                if(clone_item.hasAttribute("data-value") && clone_item.getAttribute("data-value") === "clone-item"){
+                    break;
+                }
+            }
+            parent_element = clone_item.parentElement;
+            if(parent_element.children.length <3)
+            {
+                let div = document.createElement('div');
+            div.setAttribute("class","sc_bx_area");
+            div.setAttribute("data-value",'clone-item');
+            div.innerHTML = clone_item.innerHTML;
+            div.querySelector(".minusBtn").classList.remove("show");
+            parent_element.append(div);
+            parent_element_children_length = parent_element.children.length;
+            if( parent_element_children_length == 2){
+                clone_item.querySelector(".addBtn").classList.add("show");
+            }
+            else{
+                clone_item.querySelector(".minusBtn").classList.add("show");
+                clone_item.querySelector(".addBtn").classList.add("show");
+                div.querySelector(".addBtn").classList.add("show");
+                
+            }
+            scroll(div);
+            }
+            
+            
         }
- 
-        function deleteClone(self){
-            let parent = self.parentElement.parentElement.parentElement.parentElement;
-            parent.removeChild(parent.lastElementChild);
-            let content =parent.children;
+        function removeClone(self){
+            let  clone_item = self;
+    
+            while(true){
+                clone_item = clone_item.parentElement;
+                if(clone_item.hasAttribute("data-value") && clone_item.getAttribute("data-value") === "clone-item"){
+                    break;
+                }
+            }
+            const parent_element = clone_item.parentElement;
+            parent_element.removeChild(parent_element.lastElementChild)
+           let content =parent_element.children;
             if (content.length==2){
-                content[content.length-1].querySelector('.plus_btnsc').classList.toggle('show');
-                content[content.length-1].querySelector(".hidebtn").classList.toggle("show");
+               content[content.length-1].querySelector('.plus_btnsc').classList.toggle('show');
+                content[content.length-1].querySelector(".minusBtn").classList.toggle("show");
 
             }
             else if(content.length==1){
                 content[content.length-1].querySelector('.plus_btnsc').classList.toggle('show');
             }
-            scroll(content[content.length-1]);
+            scroll(content[content.length-1]);        
         }
+        function showImgPopup(self){
+            //alert_img_which
+            let  clone_item = self;
+    
+            while(true){
+                clone_item = clone_item.parentElement;
+                if(clone_item.hasAttribute("data-value") && clone_item.getAttribute("data-value") === "clone-item"){
+                    break;
+                }
+            }
+          
+            clone_item.querySelector(".alert_img_which").classList.toggle("show");
 
-        function executeInput(self){
+        }
+         function executeInput(self){
+            //<input type="file" id="img-upload" accept="image/*" hidden>
+            const inputImg = document.createElement("input");
+            inputImg.setAttribute("type","file");
+            inputImg.setAttribute("id","img-upload");
+            inputImg.setAttribute("accept","image/*");
+            inputImg.setAttribute("hidden",true);
+            self.parentElement.append(inputImg);
             let parent = self.parentElement.parentElement;
             parent.querySelector("#img-upload").click();
             
@@ -496,7 +387,7 @@
             
                 let img_div=parent.querySelector('.add_imgs');
 
-
+                parent.querySelector('.alert_img_which').classList.toggle('show');
                 
                 var output = parent.querySelector(".image_up");
                         var reader = new FileReader();
@@ -523,8 +414,16 @@
 
         }
         function executeCamera(self){
+            const inputImg = document.createElement("input");
+            inputImg.setAttribute("type","file");
+            inputImg.setAttribute("id","camera-open");
+            inputImg.setAttribute("accept","image/*");
+            inputImg.setAttribute("capture","camera");
+            inputImg.setAttribute("hidden",true);
+            self.parentElement.append(inputImg);
             let parent = self.parentElement.parentElement;
             parent.querySelector("#camera-open").click();
+            ///<input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
             
             
             
