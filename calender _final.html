@@ -31,6 +31,9 @@
         input {
             border: none;
         }
+        .show{
+            display: none;
+        }
     </style>
 </head>
 
@@ -38,7 +41,8 @@
 
     <div class="calender_area">
         <span class="calender_title">Fecha:</span>
-        <input type="text" id="datepicker1" class="">
+        <input type="text" id="datepicker1" class="show" hidden>
+        <span id="show_date"></span>
         <!-- <span class="cander_icon"><i class="fa-regular fa-calendar"></i></span> -->
     </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -46,6 +50,8 @@
       <script type="text/javascript">
         let previous_value = moment().format('LL');
         let dateElement=document.querySelector('#datepicker1');
+        const show_date = document.querySelector("#show_date");
+        show_date.textContent = previous_value;
         
         dateElement.value = previous_value;
 
@@ -53,7 +59,7 @@
             
             document.querySelector(".calender_area").addEventListener("click",()=>{
             dateElement.click();
-            dateElement.value = previous_value;
+             show_date.textContent = previous_value;
             
             dateElement.addEventListener('datechanged', function (e) {
                 if (e.target.value !== ""){
@@ -61,7 +67,14 @@
                 }
                 if(e.target.value === ""){
                     e.target.value  = previous_value;
+                    show_date.textContent = previous_value;
+                    
                 }
+                else
+                {
+                    show_date.textContent = e.target.value;
+                }
+                
             })
 
             duDatepicker('#datepicker1', {

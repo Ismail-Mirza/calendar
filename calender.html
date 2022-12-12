@@ -27,6 +27,7 @@
             let previous_value = moment().format('LL');
             let dateElement=document.querySelector('#datepicker1');
             dateElement.value = previous_value;
+            dateElement.setAttribute("disabled",true);
 
             dateElement.addEventListener('datechanged', function (e) {
                 if (e.target.value !== ""){

@@ -201,7 +201,9 @@
                     <div class="img_body_upload" id="uploadFiles">
                         <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
                         <div class="add_imgs show">
+
                             <img class="image_up" src="" alt="upload">
+                            
                             <span class="img_deleted_btn">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
@@ -215,7 +217,55 @@
                     
                     
                     <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" onclick="executeCamera(this)">camera</button>
+                    <button class="camera_open" >camera</button>
+                </div>
+            </div>
+
+            <!----button area---->
+            <div class="sc_Button_area">
+                <!----Minus---->
+                <div class="sc_Btn2 show minusBtn" onclick="removeClone(this)">
+                    <button class="sc_btnMinus"><i class="fa-solid fa-minus"></i></button>
+                </div>
+                <!----Plus---->
+                <div class="sc_Btn2 plus_btnsc addBtn" onclick="cloneMe(this)">
+                    <button class="sc_btnPlus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <h3>2nd box Copy </h3>
+
+    <section style="padding: 20px;">
+        <!----box---->
+        <div class="sc_bx_area" data-value="clone-item">
+            <input type="text" placeholder="Ismail" class="sc_input02">
+            <input type="text" placeholder="Zishan" class="sc_input02">
+            <input type="text" placeholder="Choity" class="sc_input02">
+            <!----img upload---->
+            <div class="imgbox_area_content">
+                <div class="imgbox_area">
+                    <div class="img_body_upload" id="uploadFiles">
+                        <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
+                        <div class="add_imgs show">
+
+                            <img class="image_up" src="" alt="upload">
+                            
+                            <span class="img_deleted_btn">
+                                <i class="fa-solid fa-xmark"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!----alert---->
+                <div class="alert_img_which show">
+                    
+                    
+                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
+                    <button class="camera_open" >camera</button>
                 </div>
             </div>
 
@@ -243,8 +293,8 @@
             <div class="imgbox_area_content">
                 <div class="imgbox_area">
                     <div class="img_body_upload" id="uploadFiles">
-                        <span class="img_upIcon"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs">
+                        <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
+                        <div class="add_imgs show">
                             <img class="image_up" src="" alt="upload">
                             <span class="img_deleted_btn">
                                 <i class="fa-solid fa-xmark"></i>
@@ -256,9 +306,9 @@
             </div>
 
             <!----alert---->
-            <div class="alert_img_which">
-                <button class="choose_photo">choose</button>
-                <button class="camera_open">camera</button>
+            <div class="alert_img_which show">
+                <button class="choose_photo" onclick="executeInput(this)">choose</button>
+                    <button class="camera_open" >camera</button>
             </div>
         </div>
 
@@ -268,15 +318,18 @@
     <!----upload photo---->
     <section style="padding: 20px;">
         <!----box---->
-        <div class="sc_bx_area">
+        <div class="sc_bx_area" data-value="clone-item">
             <!----img upload---->
             <div class="imgbox_area_content">
                 <div class="imgbox_area">
 
                     <div class="img_body_upload" id="uploadFiles">
                         <span class="img_upIcon" onclick="showImgPopup(this)"><i class="fa-regular fa-image"></i></span>
-                        <div class="add_imgs">
+                        <div class="add_imgs show">
+                        
                             <img class="image_up" src="" alt="upload">
+                            
+                            
                             <span class="img_deleted_btn">
                                 <i class="fa-solid fa-xmark"></i>
                             </span>
@@ -287,14 +340,13 @@
             </div>
 
             <!----alert---->
-            <div class="alert_img_which">
-                <button class="choose_photo">choose</button>
-                <button class="camera_open">camera</button>
+            <div class="alert_img_which show">
+                <button class="choose_photo" onclick="executeInput(this)">choose</button>
+                <button class="camera_open" >camera</button>
             </div>
         </div>
 
     </section>
-
 
 
     <script>
@@ -413,52 +465,6 @@
             })
 
         }
-        function executeCamera(self){
-            const inputImg = document.createElement("input");
-            inputImg.setAttribute("type","file");
-            inputImg.setAttribute("id","camera-open");
-            inputImg.setAttribute("accept","image/*;capture=camera");
-            //inputImg.setAttribute("capture","camera");
-            inputImg.setAttribute("hidden",true);
-            self.parentElement.append(inputImg);
-            let parent = self.parentElement.parentElement;
-            parent.querySelector("#camera-open").click();
-            ///<input type="file" id="camera-open" accept="image/*" capture="camera" hidden>
-            
-            
-            
-            parent.querySelector("#camera-open").addEventListener("change",(event)=>{
-                
-                console.log("I am  executed")
-                let img_div=parent.querySelector('.add_imgs');
-
-
-                
-                var output = parent.querySelector(".image_up");
-                        var reader = new FileReader();
-                    reader.onload = function(){
-                    ;
-                    output.src = reader.result;
-                    };
-                    reader.onloadend = function(){
-                            let icon=parent.querySelector(".img_upIcon");
-                            img_div.classList.remove("show");
-                            icon.classList.add("show");
-                    }
-                    reader.readAsDataURL(event.target.files[0]);
-                    parent.querySelector(".img_deleted_btn").addEventListener("click",(e)=>{
-                        event.target.files = null;
-                        let img_div=parent.querySelector('.add_imgs');
-                        let icon=parent.querySelector(".img_upIcon");
-                       icon.classList.remove("show");
-                       img_div.classList.add("show");
-                       output.src = "";
-                    })
-                    
-            })
-
-        }
-
 
     </script>
 
