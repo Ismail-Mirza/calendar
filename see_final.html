@@ -163,6 +163,24 @@
         }
         .show{
             display: none;
+
+        }
+        .modal{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .modal .content{
+            width: 200px;
+            height: 80px;
+            background-color: #d7d7d7;
         }
     </style>
 
@@ -214,10 +232,12 @@
 
                 <!----alert---->
                 <div class="alert_img_which show">
+                    <div class="content">
+                        <button class="choose_photo" onclick="executeInput(this)">choose</button>
+                        <button class="camera_open" >camera</button>
+                    </div>
                     
                     
-                    <button class="choose_photo" onclick="executeInput(this)">choose</button>
-                    <button class="camera_open" >camera</button>
                 </div>
             </div>
 
@@ -350,9 +370,11 @@
 
 
     <script>
+        //scroll div
         function scroll(scrollDiv){
             window.scrollTo({ top: scrollDiv.offsetTop, behavior: 'smooth'});
         }
+        //clone content
         function cloneMe(self){
            let  clone_item = self;
     
@@ -386,6 +408,7 @@
             
             
         }
+        //remove clone 
         function removeClone(self){
             let  clone_item = self;
     
@@ -408,6 +431,7 @@
             }
             scroll(content[content.length-1]);        
         }
+        //show imag Pop up
         function showImgPopup(self){
             //alert_img_which
             let  clone_item = self;
@@ -419,9 +443,14 @@
                 }
             }
           
-            clone_item.querySelector(".alert_img_which").classList.toggle("show");
+            clone_item.querySelector(".alert_img_which").classList.toggle("modal");
+            //remove popup
+            clone_item.querySelector(".alert_img_which").addEventListener("click",(e)=>{
+                e.target.classList.remove("modal");
+            })
 
         }
+        //executeInput self
          function executeInput(self){
             //<input type="file" id="img-upload" accept="image/*" hidden>
             const inputImg = document.createElement("input");
@@ -430,7 +459,7 @@
             inputImg.setAttribute("accept","image/*");
             inputImg.setAttribute("hidden",true);
             self.parentElement.append(inputImg);
-            let parent = self.parentElement.parentElement;
+            let parent = self.parentElement.parentElement.parentElement;
             parent.querySelector("#img-upload").click();
             
             
@@ -439,10 +468,10 @@
             
                 let img_div=parent.querySelector('.add_imgs');
 
-                parent.querySelector('.alert_img_which').classList.toggle('show');
+                parent.querySelector('.alert_img_which').classList.remove('modal');
                 
                 var output = parent.querySelector(".image_up");
-                        var reader = new FileReader();
+                    var reader = new FileReader();
                     reader.onload = function(){
                     ;
                     output.src = reader.result;
@@ -465,6 +494,7 @@
             })
 
         }
+        
 
     </script>
 
